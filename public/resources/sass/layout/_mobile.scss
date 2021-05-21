@@ -1,0 +1,41 @@
+@media screen and (max-width: 800px) {
+  body {
+    .container {
+      flex-direction: column;
+      width: 95vw;
+      height: 95vh;
+
+      .player {
+        padding: 4rem 1rem;
+        width: 100%;
+      }
+      .btn {
+        padding: 0.5rem 1rem;
+      }
+      .player-2 {
+        .dice {
+          top: 0%;
+          left: 15%;
+
+          width: 7.5rem;
+          height: 7.5rem;
+          gap: 1rem;
+        }
+        .absoluteBtn {
+          top: 0%;
+          left: 0%;
+          transform: translate(-50%, -50%);
+        }
+        .newGameBtn {
+          left: 45%;
+        }
+        .rollDiceBtn {
+          left: 71%;
+        }
+        .holdBtn {
+          left: 90%;
+        }
+      }
+    }
+  }
+}

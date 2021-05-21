@@ -1,0 +1,90 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  background: linear-gradient(to right bottom, $bg-color-1, $bg-color-2);
+
+  .container {
+    display: flex;
+    gap: 0;
+
+    overflow: hidden;
+
+    width: 90%;
+    height: 85vh;
+
+    border-radius: 1.2rem;
+
+    .player {
+      padding: 1rem;
+
+      width: 50%;
+      height: 100%;
+
+      background: rgba(255, 255, 255, 0.25);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+    }
+
+    .active {
+      background: rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 5rem 1rem rgba($color: #000000, $alpha: 0.25);
+    }
+
+    .player-2 {
+      position: relative;
+
+      .absoluteBtn {
+        position: absolute;
+
+        top: 10%;
+        left: 0%;
+        transform: translate(-50%, -50%);
+      }
+      .newGameBtn {
+        top: 10%;
+      }
+      .rollDiceBtn {
+        top: 65%;
+      }
+      .holdBtn {
+        top: 85%;
+      }
+    }
+
+    .holdPoint {
+      font-size: 2rem;
+
+      &--value {
+        color: $bg-color-1;
+        font-size: 5rem;
+      }
+    }
+    .currentPoint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      background: $bg-color-1;
+      color: $color-wight;
+      border-radius: 1.2rem;
+
+      width: 100%;
+      max-width: 20rem;
+      height: 10rem;
+    }
+    .dn {
+      display: none;
+    }
+  }
+}

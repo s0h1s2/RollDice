@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=KoHo&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="resources/css/main.css" />
+
+    <title>Game</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="player-1 player">
+        <div class="player-1__holdPoint holdPoint">
+          <h1 class="player-1__name">player &nbsp; 1</h1>
+          <h1 id="player1-holdpoint" class="player-1__holdPoint--value holdPoint--value">0</h1>
+        </div>
+        <div class="player-1__currentPoint currentPoint">
+          <h1>current</h1>
+          <h1 class="player-1__currentPoint--value currentPoint--value">0</h1>
+        </div>
+      </div>
+
+      <div class="player-2 player">
+        <div class="player-2__holdPoint holdPoint">
+          <h1 class="player-2__name">player &nbsp; 2</h1>
+          <h1 id="player2-holdpoint" class="player-2__holdPoint--value holdPoint--value">0</h1>
+        </div>
+        <div class="player-2__currentPoint currentPoint">
+          <h1>current</h1>
+          <h1 class="player-2__currentPoint--value currentPoint--value">0</h1>
+        </div>
+
+        <a href="#" class="newGameBtn absoluteBtn btn">New Game</a>
+        <a href="#" class="rollDiceBtn absoluteBtn btn">rollDice</a>
+        <a href="#" class="holdBtn absoluteBtn btn">hold</a>
+
+        <div class="dice dn">
+          <div class="dice__line1 dice__line">
+            <div class="dice__line1--point1 dice__line--point"></div>
+            <div class="dice__line1--point2 dice__line--point"></div>
+          </div>
+          <div class="dice__line2 dice__line">
+            <div class="dice__line2--point1 dice__line--point"></div>
+            <div class="dice__line2--point2 dice__line--point"></div>
+            <div class="dice__line2--point3 dice__line--point"></div>
+          </div>
+          <div class="dice__line3 dice__line">
+            <div class="dice__line3--point1 dice__line--point"></div>
+            <div class="dice__line3--point2 dice__line--point"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 style="background-color: white;">player 1</h1>
+    
+    <script
+      src="https://kit.fontawesome.com/f7970279cd.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="resources/js/multiplayer.js"></script>
+    <script src="resources/js/main.js"></script>
+    
+    
+  </body>
+</html>

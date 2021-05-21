@@ -1,0 +1,24 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 2rem;
+
+  background: $color-wight;
+  color: $bg-color-1;
+
+  border-radius: 1.2rem;
+
+  text-decoration: none;
+  font-size: 1.6rem;
+
+  transition: all 0.4s;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem 0.25rem rgba($color: #000000, $alpha: 0.25);
+  }
+  &:active {
+    box-shadow: 0 0rem 1rem 0.25rem rgba($color: #000000, $alpha: 0.25);
+  }
+}
