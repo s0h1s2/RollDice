@@ -11,20 +11,17 @@ socket.on('connect',()=>{
         alert(data.message);
     });
     socket.on('waitforplayer',function(data){
-
     })
     socket.on('playerleave',function(){
-        // alert('player is left');
+        alert('player is left');
     })
+    socket.on('disconnect',function(){
+        window.location.reload();
+        
+    });
     /**socket.on('gamestart',function(){
         isGameStarted=true;
         alert("game is starting!");
 
-    })**/
-    
-
+    })**/  
 })
-// socket.emit('joinroom',{ roomId:roomId });
-// socket.on('gamestart',function(data){
-//     console.log("game is starting");
-// })

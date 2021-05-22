@@ -22,11 +22,14 @@ const dice = document.querySelector(".dice");
 const newGameBtn = document.querySelector(".newGameBtn");
 const rollDiceBtn = document.querySelector(".rollDiceBtn");
 const holdBtn = document.querySelector(".holdBtn");
+let previousActive;
+
 
 // js functions
 socket.on('gamestart', function (data) {
   socket.emit('ismyturn', { roomId: roomId });
 });
+
 socket.on('ismyturn', function (data) {
   if (data.player == 1) {
     document.querySelector('.player-2').classList.remove("active");
@@ -61,18 +64,34 @@ socket.on('wrongclick', function (data) {
   alert(data.message);
 });
 socket.on('gameover',function(data){
-  alert(data.message);
-
+  const player=data.player;
+  if(player==1){
+    player1Name.textContent=`player 1 wins`;
+  }
+  else if(player==2){
+    player2Name.textContent=`player 2 wins`;
+  }
+  holdBtn.classList.add('dn');
+  rollDiceBtn.classList.add('dn');
+  
+  
+});
+socket.on('hold',function(data){
+  const player=data.player;
 })
 socket.on('updatecurrentpoint', function (data) {
-  console.log(data);
-  
   const active = document.querySelector('.active .currentPoint--value');
-  active.textContent = data.currentPoint;
+  if(data.currentPoint==0 && previousActive!==undefined){
+    previousActive.textContent=0;
+  }else{
+    active.textContent = data.currentPoint;
+  }
+  previousActive=active;
+
 })
 socket.on('updateholdpoint', function (data) {
   document.querySelector('#player1-holdpoint').textContent = data.player1 === 0 ? 0 : data.player1;
-  document.querySelector('#player2-holdpoint').textContent = data.player1 === 0 ? 0 : data.player2;
+  document.querySelector('#player2-holdpoint').textContent = data.player2 === 0 ? 0 : data.player2;
 })
 const rollDiceEvent = function () {
   socket.emit('rolldice', { roomId: roomId });
@@ -81,7 +100,6 @@ const rollDiceEvent = function () {
 // hold btn function
 const hold = function () {
   socket.emit('hold', { roomId: roomId });
-  // socket.emit('gameover',{ roomId:roomId });
 }
 
 // new game btn function
