@@ -42,6 +42,8 @@ io.on('connection', function (socket) {
           }
           rooms[data.roomId].playerturn=turn;
           rooms[data.roomId].seconds=0;
+          rooms[data.roomId].currentPoint=0;
+          io.to(arrayofClient).emit('updatecurrentpoint',{ currentPoint:0 });
 
         }
         rooms[data.roomId].seconds++;
@@ -64,8 +66,7 @@ io.on('connection', function (socket) {
     const roomId=data.roomId;
     const playersArray = Array.from(rooms[roomId].players);
     if(socket.id==playersArray[playerTurn]){
-      // const dice = Math.floor(Math.random() * 6) + 1;
-      const dice=5;
+      const dice = Math.floor(Math.random() * 6) + 1;
       if(dice==1){
         const playerTurn=rooms[data.roomId].playerturn;
         if(playerTurn===0){
@@ -95,7 +96,7 @@ io.on('connection', function (socket) {
     const playerTurn=rooms[data.roomId].playerturn;
     const roomId=data.roomId;
     const playersArray = Array.from(rooms[roomId].players);
-    if(socket.id==playersArray[playerTurn] && rooms[roomId].currentPoint!==0){
+    if(socket.id==playersArray[playerTurn]){
       if(playerTurn===0 && rooms[roomId].currentPoint!==0){
         rooms[roomId].player1HoldPoint=rooms[roomId].player1HoldPoint+rooms[roomId].currentPoint;
           io.to(playersArray).emit('ismyturn',{ player:2 })
@@ -112,7 +113,6 @@ io.on('connection', function (socket) {
       }
       rooms[roomId].currentPoint=0;
       rooms[data.roomId].seconds=0;
-
       io.to(playersArray).emit('updateholdpoint',{ player1:rooms[roomId].player1HoldPoint,player2:rooms[roomId].player2HoldPoint });
     }
     else{
@@ -131,11 +131,6 @@ io.on('connection', function (socket) {
     }
   });
   
-  socket.on('currentPlayer', function (data) {
-    const playerturn = rooms[data.roomId].playerturn;
-    const idOfPlayer = Array.from(rooms[data.roomId].players)[playerturn];
-    io.to(Array.from(rooms[data.roomId].players)).emit('currentPlayer', { id: idOfPlayer });
-  });
   socket.on('disconnect', function () {
     for (let room in rooms) {
       if (rooms[room].players instanceof Set) {

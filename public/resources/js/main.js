@@ -73,7 +73,9 @@ socket.on('gameover',function(data){
   }
   holdBtn.classList.add('dn');
   rollDiceBtn.classList.add('dn');
-  
+  setTimeout(function(){
+    window.location.reload();
+  },2000);
   
 });
 socket.on('hold',function(data){
