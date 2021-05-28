@@ -178,7 +178,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-const port=3000 | process.env.PORT
+const port=3000 || process.env.PORT
 server.listen(port, function () {
   console.log("server is listening...");
 });
